@@ -2,44 +2,31 @@ using System;
 
 class Program
 {
-    static void Main(string[] args)
+     static void Main(string[] args)
     {
-        string playAgain = "yes";
+      Random randomGenerator = new Random();
+        int magicNumber = randomGenerator.Next(1, 101);
 
-        while (playAgain == "yes")
+        int guess = -1;
+
+          while (guess != magicNumber)
         {
-            Random randomGenerator = new Random();
-            int magicNumber = randomGenerator.Next(1, 101);
+            Console.Write("What is your guess? ");
+            guess = int.Parse(Console.ReadLine());
 
-            int guess = -1;
-            int attempts = 0;
-
-            while (guess != magicNumber)
+            if (magicNumber > guess)
             {
-                Console.Write("What is your guess? ");
-                string input = Console.ReadLine();
-                guess = int.Parse(input);
-
-                attempts++;
-
-                if (guess < magicNumber)
-                {
-                    Console.WriteLine("Higher");
-                }
-                else if (guess > magicNumber)
-                {
-                    Console.WriteLine("Lower");
-                }
-                else
-                {
-                    Console.WriteLine("You guessed it!");
-                }
+                Console.WriteLine("Higher");
+            }
+            else if (magicNumber < guess)
+            {
+                Console.WriteLine("Lower");
+            }
+            else
+            {
+                Console.WriteLine("You guessed it!");
             }
 
-            Console.WriteLine($"You took {attempts} guesses.");
-
-            Console.Write("Do you want to play again? ");
-            playAgain = Console.ReadLine();
-        }
+        }                    
     }
 }

@@ -2,17 +2,20 @@ using System;
 
 class Program
 {
-     static void Main(string[] args)
+    static void Main(string[] args)
     {
-      Random randomGenerator = new Random();
+        Random randomGenerator = new Random();
         int magicNumber = randomGenerator.Next(1, 101);
 
         int guess = -1;
+        int attempts = 0;
 
-          while (guess != magicNumber)
+        while (guess != magicNumber)
         {
             Console.Write("What is your guess? ");
             guess = int.Parse(Console.ReadLine());
+
+            attempts++;
 
             if (magicNumber > guess)
             {
@@ -26,7 +29,8 @@ class Program
             {
                 Console.WriteLine("You guessed it!");
             }
+        }
 
-        }                    
+        Console.WriteLine($"You took {attempts} guesses.");
     }
 }
